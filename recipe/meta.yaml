@@ -10,12 +10,13 @@ package:
 source:
   fn: vipor_{{ version }}.tar.gz
   url:
-    - https://cran.r-project.org/src/contrib/vipor_{{ version }}.tar.gz
-    - https://cran.r-project.org/src/contrib/Archive/vipor/vipor_{{ version }}.tar.gz
+    - {{ cran_mirror }}/src/contrib/vipor_{{ version }}.tar.gz
+    - {{ cran_mirror }}/src/contrib/Archive/vipor/vipor_{{ version }}.tar.gz
   sha256: 7d19251ac37639d6a0fed2d30f1af4e578785677df5e53dcdb2a22771a604f84
 
 build:
-  number: 0
+  merge_build_host: True  # [win]
+  number: 1
   skip: true  # [win32]
 
   rpaths:
@@ -24,14 +25,15 @@ build:
 
 requirements:
   build:
+    - {{posix}}zip               # [win]
+  host:
     - r-base
-
   run:
     - r-base
 
 test:
   commands:
-    - $R -e "library('vipor')"  # [not win]
+    - $R -e "library('vipor')"           # [not win]
     - "\"%R%\" -e \"library('vipor')\""  # [win]
 
 about:
