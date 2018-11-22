@@ -24,8 +24,6 @@ build:
     - lib/
 
 requirements:
-  build:
-    - {{posix}}zip               # [win]
   host:
     - r-base
   run:
