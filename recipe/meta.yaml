@@ -1,4 +1,4 @@
-{% set version = '0.4.5' %}
+{% set version = "0.4.7" %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -10,11 +10,11 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/vipor_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/vipor/vipor_{{ version }}.tar.gz
-  sha256: 7d19251ac37639d6a0fed2d30f1af4e578785677df5e53dcdb2a22771a604f84
+  sha256: baad41e9ddaa13b5a1db1abab34253b27d5b99e5a6a649b2036aaf1483370b9e
 
 build:
-  merge_build_host: True  # [win]
-  number: 1005
+  merge_build_host: true  # [win]
+  number: 0
   noarch: generic
   rpaths:
     - lib/R/lib/
@@ -37,9 +37,7 @@ test:
 about:
   home: https://CRAN.R-project.org/package=vipor
   license: GPL-2.0-or-later
-  summary: Generate a violin point plot, a combination of a violin/histogram plot and a scatter
-    plot by offsetting points within a category based on their density using quasirandom
-    noise.
+  summary: Generate a violin point plot, a combination of a violin/histogram plot and a scatter plot by offsetting points within a category based on their density using quasirandom noise.
   license_family: GPL3
   license_file:
     - {{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3
